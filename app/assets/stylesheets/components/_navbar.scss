@@ -23,6 +23,7 @@ header nav {
 header .nav-links {
   display: none;
   position: relative;
+  align-items: center;
 }
 header .nav-link {
   text-align: center;
@@ -34,13 +35,11 @@ header .nav-link:hover {
   background-color: $dark-bis;
   transition: 0.25s;
 }
-header .nav-button {
+header .nav-link-button {
   color: $light;
-  margin: 0 1em 0 1em;
-  //text-align: center;
+  margin: 0 0.5em 0 0.5em;
   line-height: 64px;
   transition: 0.25s;
-  width: 6em;
 }
 header .nav-account {
   line-height: 64px;
