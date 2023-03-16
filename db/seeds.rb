@@ -1,7 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# ALL
+# ---------------
+# User creation
+# Create an admin user
+puts "Destroying exisitng users..."
+User.destroy_all
+
+user = User.new
+user.first_name = "Alexandre"
+user.last_name = "Stanescot"
+user.email = "contact@as-consult.io"
+user.role = "admin"
+user.password = "contact@as-consult.io"
+user.confirmed_at = Time.zone.now - 1.hour
+user.confirmation_sent_at = Time.zone.now - 2.hours
+if user.save!
+  puts "Admin user created"
+else
+  user.errors.each do | error |
+    puts "#{error.full_message}"
+  end
+  puts "Error in admin user creation"
+end
