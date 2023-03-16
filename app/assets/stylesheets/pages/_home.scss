@@ -1,0 +1,131 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+  background-color: white;
+}
+.home-container-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 50%;
+}
+.home-container-text-title {
+  h1 {
+    color: $color1;
+    font-weight: 600;
+  }
+}
+.home-container-text-slogan {
+  h2 {
+    color: $color1;
+    font-weight: 400;
+    text-align: center;
+  }
+  em {
+    color: $primary;
+    font-style: normal;
+    font-weight: 500;
+  }
+}
+.home-container-image {
+  height: 100%;
+  background-image: url("william-topa-7_4bU5tHRLQ-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+@media only screen and (min-width: 700px) {
+  .home-container {
+    flex-direction: row;
+  }
+  .home-container-image {
+    width: 100%;
+    background-attachment: fixed;
+  }
+}
+.home-article {
+  padding: 10px 0px;
+  h1 {
+    font-size: 2.5em;
+    color: $dark;
+    font-weight: 900;
+    text-align: center;
+  }
+  h2 {
+    color: $dark;
+    text-align: center;
+  }
+} 
+.how {
+  background-color: $light;
+}
+.why {
+  background-color: $color3;
+}
+.home-article-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.home-article-container-element {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  min-width: 300px;
+  border-radius: $border-radius;
+  h3 {
+    color: $dark;
+  }
+}
+.home-article-container-element-logo {
+  margin-top: 20px;
+}
+.home-article-container-element-text {
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  min-height: 180px;
+  max-width: 350px;
+  text-align: center;
+}
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  color: $light;
+  background-color: $color1;
+  justify-content: center;
+}
+.footer-left {
+  display: none;
+}
+.footer-center {
+  display: none; 
+}
+.footer-right {
+  text-align: right;
+  text-align: center;
+}
+.email {
+  text-decoration: none;
+  text-decoration: underline;
+  color: $light;
+}
+@media only screen and (min-width: 700px) {
+  footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer-left {
+    display: block;
+  }
+  .footer-center {
+    display: block;
+  }
+}
