@@ -24,24 +24,17 @@ namespace :import do
       puts "Airport database existing..."
       CSV.foreach(filepath, headers: :first_row) do |row|
         current_icao = row['ident']
-        if Airport.find_by(icao: row['ident']).nil?
+        if Airport.find_by(icao: row['ident']).nil? # New airport in csv
           airport = Airport.create(icao: row['ident'], name: row['name'], city: row['municipality'], country: row['iso_country'], iata: row['iata_code'], latitude: row['latitude_deg'], longitude: row['longitude_deg'], altitude: row['elevation_ft'], airport_type: row['type'], continent: row['continent'], url: row['home_link'], local_code: row['local_code'])
-        airport.persisted? ? counter_created += 1 : counter_rejected += 1
-        else
-          existing_airport  = Airport.find_by(icao: row['ident'])
-          csv_airport       = Airport.new(icao: row['ident'], name: row['name'], city: row['municipality'], country: row['iso_country'], iata: row['iata_code'], latitude: row['latitude_deg'], longitude: row['longitude_deg'], altitude: row['elevation_ft'], airport_type: row['type'], continent: row['continent'], url: row['home_link'], local_code: row['local_code'])
-          if !existing_airport == csv_airport
-            csv_airport.create
-            if airport.persisted?
-              counter_updated += 1
-              puts "Airport #{existing_airport.icao} - #{existing_airport.name} updated"
-            else
-              counter_rejected += 1
-            end
-          end
+          airport.persisted? ? counter_created += 1 : counter_rejected += 1
+        else  # Airports already exists
+          airport = Airport.find_by(icao: row['ident'])
+          airport.update(icao: row['ident'], name: row['name'], city: row['municipality'], country: row['iso_country'], iata: row['iata_code'], latitude: row['latitude_deg'], longitude: row['longitude_deg'], altitude: row['elevation_ft'], airport_type: row['type'], continent: row['continent'], url: row['home_link'], local_code: row['local_code'])
+          airport.persisted? ? counter_updated += 1 : counter_rejected += 1
         end
       end
-      puts "Imported #{counter_created} / #{counter_created + counter_rejected} airports!"
+      puts "Created #{counter_created} / #{counter_created + counter_rejected} airports!"
+      puts "Updated #{counter_updated} / #{counter_updated + counter_rejected} airports!"
     end
   end
 end
