@@ -35,3 +35,4 @@
 *.swp
 *.env
 /public/sitemap.xml.gz
+/ourairports-data
