@@ -8,8 +8,8 @@
 - capistrano
 
 ## VERSIONS
-Ruby: 3.1.13
-Rails: 7.0.4.2
+- Ruby: 3.1.13
+- Rails: 7.0.4.2
 
 ## INSTALLATION
 * System dependencies
@@ -31,6 +31,8 @@ Rails: 7.0.4.2
 * Services (job queues, cache servers, search engines, etc.)
 
 ## AFTER INSTALLATION
+### Envrionment variables
+
 Ensure to have a .env file containing:
 ````bash
 MAIL_USERNAME=noreply
@@ -40,4 +42,19 @@ MAIL_SMTP_SERVER=example.com
 CONTACT_FORM_RECIPIENT=noreply@example.com
 OPENWEATHERMAP_API=xxxxxxxxxxxxxxxxxxxxxx
 ````
+
+### Create airport data
+````bash
+# In project folder
+git clone git@github.com:davidmegginson/ourairports-data.git
+````
+
 ## DEPLOYMENT INSTRUCTIONS
+
+## MAINTENANCE
+### Update airport data 
+````bash
+cd ourairports-data
+git pull origin main
+````
+
