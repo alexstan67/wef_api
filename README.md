@@ -6,33 +6,13 @@
 - devise
 - dotenv-rails
 - capistrano
+- rack-cors
 
 ## VERSIONS
 - Ruby: 3.1.13
 - Rails: 7.0.4.2
 
-## INSTALLATION
-* System dependencies
-
-* Configuration
-
-* Database creation
-`rails db:create`
-
-* Database initialization
-`rails db:migrate`
-
-* Run the database seeds
-`rails db:seed`
-
-* How to run the test suite
-`rails test`
-
-* Services (job queues, cache servers, search engines, etc.)
-
-## AFTER INSTALLATION
-### Envrionment variables
-
+## ENVIRONMENT VARIABLES
 Ensure to have a .env file containing:
 ````bash
 MAIL_USERNAME=noreply
@@ -43,6 +23,22 @@ CONTACT_FORM_RECIPIENT=noreply@example.com
 OPENWEATHERMAP_API=xxxxxxxxxxxxxxxxxxxxxx
 ````
 
+## INSTALLATION
+### Gemfile
+`bundle install`
+
+### Database
+````bash
+#Database creation
+rails db:create
+
+#Database initialization
+rails db:migrate
+
+#Run the database seeds
+rails db:seed
+````
+
 ### Create airport data
 ````bash
 # In project folder
@@ -50,9 +46,10 @@ git clone git@github.com:davidmegginson/ourairports-data.git
 ````
 
 ## DEPLOYMENT INSTRUCTIONS
+TODO
 
 ## MAINTENANCE
-### Update airport data 
+### Update airports data 
 ````bash
 cd ourairports-data
 git pull origin main
