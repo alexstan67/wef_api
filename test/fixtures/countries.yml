@@ -9,7 +9,15 @@ france:
   name: "France"
   continent: "EU"
 
-incorrect:
+incorrect1:
   code: "FRA"
+  name: "France"
+  continent: "EU"
+incorrect2:
+  code: "FR"
   name: ""
+  continent: "EU"
+incorrect3:
+  code: "FR"
+  name: "France"
   continent: "EUR"

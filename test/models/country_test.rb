@@ -11,7 +11,15 @@ class CountryTest < ActiveSupport::TestCase
     assert countries(:france).save
   end
 
-  test "should not create a country" do
-    assert_not countries(:incorrect).save
+  test "should not create a country - incorrect code" do
+    assert_not countries(:incorrect1).save
+  end
+  
+  test "should not create a country - no country name" do
+    assert_not countries(:incorrect2).save
+  end
+
+  test "should not create a country - incorrect continent" do
+    assert_not countries(:incorrect3).save
   end
 end
