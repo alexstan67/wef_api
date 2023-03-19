@@ -1,7 +1,9 @@
+require 'csv'
+
+# #####################################
 # ALL
-# ---------------
+# #####################################
 # User creation
-# Create an admin user
 puts "Destroying exisitng users..."
 User.destroy_all
 
@@ -21,3 +23,16 @@ else
   end
   puts "Error in admin user creation"
 end
+
+# Import countries
+Country.destroy_all
+filepath = "ourairports-data/countries.csv"
+puts "Reading #{filepath}..."
+counter_created = 0
+counter_rejected = 0
+CSV.foreach(filepath, headers: :first_row) do |row|
+  country = Country.create(code: row['code'], name: row['name'], continent: row['continent'])
+  country.persisted? ? counter_created += 1 : counter_rejected += 1
+end
+puts "#{counter_created} / #{counter_created + counter_rejected} countries created!"
+
