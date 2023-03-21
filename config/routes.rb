@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
-      get "/tests", to: "tests#index"
+      get "/airports", to: "airports#index"
+      get "/airports/:id", to: "airports#show"
     end
   end
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
