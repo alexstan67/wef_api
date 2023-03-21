@@ -65,8 +65,8 @@ header .nav-lang {
   padding: 0;
   align-self: center;
   justify-content: center;
-  a {
-    text-decoration: none;
+  li {
+    list-style-type: none;
   }
 }
 header .account-menu-content {
