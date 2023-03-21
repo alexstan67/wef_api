@@ -20,7 +20,7 @@
         <% end %>
       </ul>
       <div data-controller="account" data-action="click->account#menu">
-        <p class="nav-account">♙</p>
+        <%= image_tag("user-light.svg", class: "nav-account") %>
         <div class="account-menu-content" data-account-target="account">
           <% if user_signed_in? %>
           <p><%= link_to t("shared.account"), edit_user_registration_path %></p>
