@@ -51,7 +51,7 @@ class Api::V1::AirportsController < ApplicationController
     airport = Airport.find(airport_id)
 
     # SQL query implementing Haversine formula to calculate distance in nm based on GPS coordinates
-    limit = 10 #TODO: Remove after testing
+    limit = 10 #TODO: Remove this limit after testing
     sql = "SELECT \
             (((acos(sin(( ? * pi() / 180)) * sin((latitude * pi() / 180)) + cos(( ? * pi() / 180)) \
             * cos((latitude * pi() / 180)) * cos((( ? - longitude) * pi() / 180)))) * 180 / pi()) \
@@ -69,7 +69,7 @@ class Api::V1::AirportsController < ApplicationController
           ORDER BY \
              airports.country, airports.airport_type \
           LIMIT ?;"
-    airports_within_range = Airport.find_by_sql [sql, airport.latitude, airport.latitude, airport.longitude, airport.latitude, airport.latitude, airport.longitude, range + margin, airport.latitude, airport.latitude, airport.longitude, range - margin, limit]
+    airports_within_range = Airport.find_by_sql [sql, airport.latitude, airport.latitude, airport.longitude, airport.latitude, airport.latitude, airport.longitude, range + (margin/2), airport.latitude, airport.latitude, airport.longitude, range - (margin/2), limit]
 
     render json: airports_within_range
   end
