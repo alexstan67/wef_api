@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_19_170504) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_13_082125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "airports", force: :cascade do |t|
     t.string "icao"
@@ -30,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_19_170504) do
     t.string "continent"
     t.string "url"
     t.string "local_code"
+    t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
   end
 
   create_table "countries", force: :cascade do |t|
