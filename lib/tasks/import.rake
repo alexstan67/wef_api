@@ -14,8 +14,10 @@ namespace :import do
     # First we check if it is a first import
     if Airport.count.zero? # creation mode
       puts "First airport database import..."
+      factory = RGeo::Geographic.spherical_factory(srid: 4326)
       CSV.foreach(filepath, headers: :first_row) do |row|
-        airport = Airport.create(icao: row['ident'], name: row['name'], city: row['municipality'], country: row['iso_country'], iata: row['iata_code'], latitude: row['latitude_deg'], longitude: row['longitude_deg'], altitude: row['elevation_ft'], airport_type: row['type'], continent: row['continent'], url: row['home_link'], local_code: row['local_code'])
+        point = factory.point(row['longitude_deg'].to_f, row['latitude_deg'].to_f)
+        airport = Airport.create(icao: row['ident'], name: row['name'], city: row['municipality'], country: row['iso_country'], iata: row['iata_code'], latitude: row['latitude_deg'], longitude: row['longitude_deg'], altitude: row['elevation_ft'], airport_type: row['type'], continent: row['continent'], url: row['home_link'], local_code: row['local_code'], lonlat: point)
         airport.persisted? ? counter_created += 1 : counter_rejected += 1
         #puts "#{airport.icao} - #{airport.name} - #{airport.errors.full_messages.join(",")}" if airport.errors.any?
       end
