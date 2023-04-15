@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_13_082125) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_15_172929) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -38,6 +38,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_13_082125) do
     t.string "code"
     t.string "name"
     t.string "continent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "osm_points", force: :cascade do |t|
+    t.integer "osm_id", null: false
+    t.string "osm_name"
+    t.string "amenity", null: false
+    t.string "tags"
+    t.geography "way", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
+    t.integer "distance"
+    t.integer "airport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
