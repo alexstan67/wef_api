@@ -43,12 +43,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_172929) do
   end
 
   create_table "osm_points", force: :cascade do |t|
-    t.integer "osm_id", null: false
+    t.bigint "osm_id", null: false
     t.string "osm_name"
     t.string "amenity", null: false
     t.string "tags"
-    t.geography "way", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
-    t.integer "distance"
+    t.geometry "way", limit: {:srid=>3857, :type=>"st_point"}
+    t.float "distance"
     t.integer "airport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
