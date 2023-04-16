@@ -1,5 +1,5 @@
 class Airport < ApplicationRecord
-  ACCEPTED_COUNTRIES = [ "LU", "DE", "FR" ].freeze
+  ACCEPTED_COUNTRIES = [ "LU", "DE", "FR", "CH" ].freeze
   ACCEPTED_AIRPORT_TYPES = [ "small_airport", "medium_airport", "large_airport" ].freeze
   validates :icao, presence: true
   validates :name, format: { without: /ET[A-Z]{2}/, message: "No German military airbase" }
