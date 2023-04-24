@@ -1,0 +1,2 @@
+class WeatherTile < ApplicationRecord
+end
