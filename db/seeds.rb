@@ -36,3 +36,40 @@ CSV.foreach(filepath, headers: :first_row) do |row|
 end
 puts "#{counter_created} / #{counter_created + counter_rejected} countries created!"
 
+# Create some sample weather tiles for demo purpose
+puts "Creating weather tiles"
+WeatherTile.destroy_all
+
+# Create a factory object with SRID 4326
+factory = RGeo::Geographic.spherical_factory(:srid => 4326)
+
+# Iterate on several polygons around luxembourg
+(0..8).each do |lon|
+  (42..51).each do |lat|
+
+  # Create an array of coordinate pairs
+  coordinates = [[lon, lat],
+                 [lon, lat + 1],
+                 [lon + 1, lat + 1],
+                 [lon + 1, lat],
+                 [lon, lat]]
+
+  # Create an array of RGeo::Feature::Point objects
+  points = coordinates.map { |coord| factory.point(coord[0], coord[1]) }
+
+  # Create a linear ring from the array of points
+  ring = factory.linear_ring(points)
+
+  # Create a polygon object from the linear ring
+  polygon = factory.polygon(ring)
+
+  # Create a new WeatherTile object with a polygon column
+  tile = WeatherTile.new(geom: polygon, lon_center:(lon + (lon + 1)).to_f / 2, lat_center:(lat + (lat + 1)).to_f / 2)
+
+  # Save the object to the database
+  tile.save
+
+  end
+end
+
+
