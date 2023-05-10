@@ -43,6 +43,10 @@ rails db:migrate
 
 #Run the database seeds
 rails db:seed
+
+#Import the airports
+rails import:airports
+
 ````
 
 ## DEPLOYMENT INSTRUCTIONS
