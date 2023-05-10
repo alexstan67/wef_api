@@ -27,6 +27,12 @@ OPENWEATHERMAP_API=xxxxxxxxxxxxxxxxxxxxxx
 ### Gemfile
 `bundle install`
 
+### Create airport data
+````bash
+# In project folder
+git clone git@github.com:davidmegginson/ourairports-data.git
+````
+
 ### Database
 ````bash
 #Database creation
@@ -37,12 +43,6 @@ rails db:migrate
 
 #Run the database seeds
 rails db:seed
-````
-
-### Create airport data
-````bash
-# In project folder
-git clone git@github.com:davidmegginson/ourairports-data.git
 ````
 
 ## DEPLOYMENT INSTRUCTIONS
