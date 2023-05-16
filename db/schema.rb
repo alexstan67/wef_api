@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_20_152316) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_15_115030) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -42,6 +42,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_20_152316) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "osm_lines", force: :cascade do |t|
+    t.bigint "osm_id", null: false
+    t.string "osm_name"
+    t.string "amenity", null: false
+    t.string "tags"
+    t.geometry "way", limit: {:srid=>3857, :type=>"line_string"}
+    t.float "distance"
+    t.integer "airport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category"
+  end
+
   create_table "osm_points", force: :cascade do |t|
     t.bigint "osm_id", null: false
     t.string "osm_name"
@@ -52,6 +65,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_20_152316) do
     t.integer "airport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
+    t.integer "geotype"
+  end
+
+  create_table "osm_polygones", force: :cascade do |t|
+    t.bigint "osm_id", null: false
+    t.string "osm_name"
+    t.string "amenity", null: false
+    t.string "tags"
+    t.geometry "way", limit: {:srid=>3857, :type=>"st_polygon"}
+    t.float "distance"
+    t.integer "airport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category"
   end
 
   create_table "users", force: :cascade do |t|
