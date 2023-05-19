@@ -2,3 +2,6 @@ en:
   activerecord:
     models:
     attributes:
+  map:
+    index:
+      map_link: "Map"
