@@ -79,6 +79,7 @@ gem "rack-cors"
 gem "activerecord-postgis-adapter"
 gem "rgeo"
 gem "rgeo-geojson"
+gem "rgeo-proj4"
 
 group :development do
   gem "capistrano-rake", require: false
