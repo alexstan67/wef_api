@@ -77,6 +77,9 @@ gem "ed25519", ">= 1.2", "< 2.0"
 gem "bcrypt_pbkdf", ">= 1.0", "< 2.0"
 gem "rack-cors"
 gem "activerecord-postgis-adapter"
+gem "rgeo"
+gem "rgeo-geojson"
+gem "rgeo-proj4"
 
 group :development do
   gem "capistrano-rake", require: false
