@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.17.2"
 
-set :application, "wef"
+set :application, "wef_api"
 i#set :repo_url, "git@example.com:me/my_repo.git"
 set :repo_url, "ssh://gitadmin@fly.aerostan.com/volume1/git/as-consult.git"
 
